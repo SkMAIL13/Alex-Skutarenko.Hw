@@ -1,4 +1,5 @@
 import UIKit
+import Darwin
 
 //Hw Tasks
 //=======================================
@@ -220,16 +221,71 @@ thirdTuple.mark = 5
 fourthTuple.mark = 3
 fifthTuple.mark = 4
 
-print("Name of student: \(firstTuple.name!)")
+//print("Name of student: \(firstTuple.name!)")
 if firstTuple.carNumber != nil {
-    print("Student: \(firstTuple.name!), " + "his car number is: \(firstTuple.carNumber!)")
+//    print("Student: \(firstTuple.name!), " + "his car number is: \(firstTuple.carNumber!)")
 }   else {
-    print("Student: \(firstTuple.name!), havent a car")
+//    print("Student: \(firstTuple.name!), havent a car")
 }
 
 
 if firstTuple.2 != nil {
-    print("Stundent \(firstTuple.name!), get mark: \(firstTuple.mark!)")
+//    print("Stundent \(firstTuple.name!), get mark: \(firstTuple.mark!)")
 } else {
-    print("Stundent: \(firstTuple.name!), havent marks")
+//    print("Stundent: \(firstTuple.name!), havent marks")
 }
+
+//=======================================
+//Task-5
+/*
+1. Посчитать количество секунд от начала года до вашего дня рождения. Игнорируйте високосный год и переходы на летнее и зимнее время. Но если хотите - не игнорируйте :)
+*/
+let sec = 60
+let min = 60
+let hrs = 24
+let days = 30
+let date = 14
+let myMonth = 5
+
+let Bday = ((myMonth * days) - 16) * hrs * min * sec
+
+//print("\(Bday) seconds to my Bday")
+
+/*
+2. Посчитайте в каком квартале вы родились
+*/
+
+let quater = 4
+let year = 12
+
+let quaterBday = ((myMonth * days) - 16) % quater
+//print(quaterBday)
+
+/*
+3. Создайте пять переменных типа Инт и добавьте их в выражения со сложением, вычитанием, умножением и делением. В этих выражениях каждая из переменных должна иметь при себе унарный постфиксный или префиксный оператор. Переменные могут повторяться.
+
+Убедитесь что ваши вычисления в голове или на бумаге совпадают с ответом. Обратите внимание на приоритет операций
+*/
+let firstInt = 1
+let secondInt = 2
+let thirdInt = 3
+let fourthInt = 4
+let fifthInt = 5
+
+var opertators = fifthInt + fourthInt - thirdInt * secondInt / firstInt
+//print(opertators)
+
+/*
+4. Шахматная доска 8х8. Каждое значение в диапазоне 1…8. При заданных двух значениях по вертикали и горизонтали определите цвет поля. Если хотите усложнить задачу, то вместо цифр на горизонтальной оси используйте буквы a,b,c,d,e,f,g,h
+*/
+
+let firstCoord = 4
+let secondCoord = 2
+
+if firstCoord % 2 == 0 && secondCoord % 2 == 0  {
+    print("Coordinate(\(firstCoord); \(secondCoord)) - is White")
+} else {
+    print("Coordinate(\(firstCoord); \(secondCoord)) - is Black")
+}
+
+
