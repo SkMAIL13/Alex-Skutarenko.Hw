@@ -1,5 +1,6 @@
 import UIKit
 import Darwin
+import Foundation
 
 //Hw Tasks
 //=======================================
@@ -98,56 +99,56 @@ emptyTuple = (27, 25, 10)
  (Используйте и optional binding и forced unwrapping)
 */
  
-let string1 = "13"
-let string2 = "19"
-let string3 = "300"
-let string4 = "four"
-let string5 = "1337Leet"
+//let string1 = "13"
+//let string2 = "19"
+//let string3 = "300"
+//let string4 = "four"
+//let string5 = "1337Leet"
 
-var res:Int = 0
+//var res:Int = 0
 
-let str1 = Int(string1)!
+//let str1 = Int(string1)!
 
 //res += str1
 //print(res)
 
 
-let str2 = Int(string2)
+//let str2 = Int(string2)
 
-if str2 != nil {
-    res += str2!
+//if str2 != nil {
+//    res += str2!
 //    print(res)
-} else {
-    "cant do it"
-}
+//} else {
+//    "cant do it"
+//}
 
-let str3 = Int(string3)
+//let str3 = Int(string3)
 
-if str3 != nil {
-    res += str3!
+//if str3 != nil {
+//    res += str3!
 //    print(res)
-} else {
-    "cant do it"
-}
+//} else {
+//    "cant do it"
+//}
 
-let str4 = Int(string4)
+//let str4 = Int(string4)
 
-if str4 != nil {
-    res += str4!
-    print(res)
-} else {
-    "cant do it"
-}
-
-
-let str5 = Int(string5)
-
-if str5 != nil {
-    res += str5!
+//if str4 != nil {
+//    res += str4!
 //    print(res)
-} else {
-    "cant do it"
-}
+//} else {
+//    "cant do it"
+//}
+
+
+//let str5 = Int(string5)
+//
+//if str5 != nil {
+////    res += str5!
+////    print(res)
+//} else {
+//    "cant do it"
+//}
 
 
 /*2. С сервера к нам приходит тюпл с тремя параметрами:
@@ -179,7 +180,7 @@ if infTuple.0 >= 200 && infTuple.statusCode < 300 {
 //    print("Get error:" + " " + infTuple.2)
 }
 
-/*3. Создайте 5 тюплов с тремя параметрами:
+/* 3. Создайте 5 тюплов с тремя параметрами:
 
 имя, номер машины, оценка за контрольную
 
@@ -283,9 +284,76 @@ let firstCoord = 4
 let secondCoord = 2
 
 if firstCoord % 2 == 0 && secondCoord % 2 == 0  {
-    print("Coordinate(\(firstCoord); \(secondCoord)) - is White")
+//    print("Coordinate(\(firstCoord); \(secondCoord)) - is White")
 } else {
-    print("Coordinate(\(firstCoord); \(secondCoord)) - is Black")
+//    print("Coordinate(\(firstCoord); \(secondCoord)) - is Black")
 }
 
+//=======================================
+//Task-6
+/* 1. Выполните задание #1 урока о базовых операторах: http://vk.com/topic-58860049_31536965 (Создать пять строковых констант. Одни константы это только цифры, другие содержат еще и буквы. Найти сумму всех этих констант приведя их к Int (Используйте и optional binding и forced unwrapping))
+ 
+только вместо forced unwrapping и optional binding используйте оператор ??
 
+Когда посчитаете сумму, то представьте свое выражение в виде строки
+Например: 5 + nil + 2 + 3 + nil = 10
+
+но в первом случае используйте интерполяцию строк, а во втором конкатенацию
+*/
+
+let string1 = "13"
+let string2 = "19"
+let string3 = "300"
+let string4 = "four"
+let string5 = "1337Leet"
+
+let strInt1 = Int(string1) ?? 0
+let strInt2 = Int(string2) ?? 0
+let strInt3 = Int(string3) ?? 0
+let strInt4 = Int(string4) ?? 0
+let strInt5 = Int(string5) ?? 0
+
+var resInt = 0
+
+resInt = strInt1 + strInt2 + strInt3 + strInt4 + strInt5
+//print("Result with interpolation: \(strInt1) + \(strInt2) + \(strInt3) + \(strInt4) + \(strInt5) = \(resInt)")
+
+let checkNil1 = Int(string1) != nil ? string1 : "nil"
+let checkNil2 = Int(string2) != nil ? string2 : "nil"
+let checkNil3 = Int(string3) != nil ? string3 : "nil"
+let checkNil4 = Int(string4) != nil ? string4 : "nil"
+let checkNil5 = Int(string5) != nil ? string5 : "nil"
+
+let resInt1 = checkNil1 + checkNil2 + checkNil3 + checkNil4 + checkNil5
+print(checkNil1 + " + " + checkNil2 + " + " + checkNil3 + " + " + checkNil4 + " + " + checkNil5 + " = " + " \(resInt1) ")
+
+/*
+2. Поиграйтесь с юникодом и создайте строку из 5 самых классных по вашему мнению символов,
+можно использовать составные символы. Посчитайте длину строки методом SWIFT и Obj-C
+*/
+
+let uniSymbol = "\u{2049}" + "\u{2318}"
+print(uniSymbol.count, " : Unicode items")
+print("Items length is: ", (uniSymbol as NSString).length)
+
+/*
+3. Создайте строку английский алфавит, все буквы малые от a до z
+
+задайте константу - один из символов этого алфавита
+
+Используя цикл for определите под каким индексов в строке находится этот символ
+*/
+
+//let alphabet:Character = "abc, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z
+let alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+let k : Character = "z"
+var index = 0
+
+for i in alphabet {
+    if i != k {
+        index += 1
+    } else {
+        print("Letter \(k) at position: \(index)")
+    }
+}
