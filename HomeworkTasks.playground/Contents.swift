@@ -347,7 +347,7 @@ print("Items length is: ", (uniSymbol as NSString).length)
 //let alphabet:Character = "abc, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z
 let alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-let k : Character = "z"
+let k : Character = "k"
 var index = 0
 
 for i in alphabet {
