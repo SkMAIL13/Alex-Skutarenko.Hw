@@ -1,95 +1,75 @@
 //Task-7
 /*
- 1. Создайте дикшинари как журнал студентов, где имя и фамилия студента это ключ, а оценка за контрольную значение. Некоторым студентам повысьте оценки - они пересдали. Потом добавьте парочку студентов, так как их только что перевели к вам в группу. А потом несколько удалите, так как они от вас ушли :(
+ 1. создать массив "дни в месяцах"
+ 12 элементов содержащих количество дней в соответствующем месяце
 
- После всех этих перетрубаций посчитайте общий бал группы и средний бал
+ используя цикл for и этот массив
 
- 2. Создать дикшинари дни в месяцах, где месяц это ключ, а количество дней - значение.
- В цикле выведите ключ-значение попарно, причем один раз выведите через тюплы, а другой раз пройдитесь по массиву ключей и для каждого из них доставайте значения.
+ - выведите количество дней в каждом месяце (без имен месяцев)
+ - используйте еще один массив с именами месяцев чтобы вывести название месяца + количество дней
+ - сделайте тоже самое, но используя массив тюплов с параметрами (имя месяца, кол-во дней)
+ - сделайте тоже самое, только выводите дни в обратном порядке (порядок в массиве не меняется)
 
- 3. Создать дикшинари , в которой ключ это адрес шахматной клетки (пример: a5, b3, g8), а значение это Bool. Если у клетки белый цвет, то значение true, а если черный - false. Выведите дикшинари в печать и убедитесь что все правильно.
+ - для произвольно выбранной даты (месяц и день) посчитайте количество дней до этой даты от начала года
 
- Рекомендация: постарайтесь все сделать используя вложенный цикл (объяснение в уроке).
+ 2. Сделайте первое задание к уроку номер 4 используя массивы:
+
+ (создайте массив опшинал интов и посчитайте сумму)
+
+ - в одном случае используйте optional binding
+ - в другом forced unwrapping
+ - а в третьем оператор ??
+
+ 3. создайте строку алфавит и пустой массив строк
+
+ в цикле пройдитесь по всем символам строки попорядку, преобразовывайте каждый в строку и добавляйте в массив, причем так, чтобы на выходе получился массив с алфавитом задом-наперед
+
  */
-
-import Darwin
 
 print("-------------Task-1-------------")
 
-var classRegister = [
-    "Ivanov Ivan": 5,
-    "Semenov Semen": 3,
-    "Fedorov Fedor": 2
-]
+let monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-print(classRegister)
-
-classRegister["Fedorov Fedor"] = 5
-classRegister.updateValue(4, forKey: "Semenov Semen")
-print("Marks after work on mistakes: \(classRegister)")
-
-classRegister["Dmitriy Dmitriev"] = 3
-classRegister["Potapov Potap"] = 3
-print("Our class with new classmates:", classRegister)
-
-classRegister["Ivanov Ivan"] = nil
-classRegister.removeValue(forKey: "Fedorov Fedor")
-print("Class without some students: \(classRegister)")
-
-print("-----General Summ of marks-----")
-var generalSum = 0
-for value in classRegister.values {
-    generalSum += value
-    
-}
-print("General sum of Students is:", generalSum)
-
-print("-----Average Summ of marks-----")
-let averageSum = Double(generalSum) / Double(classRegister.count)
-print("Average summ of Students is:", averageSum)
-
-/*
- 2. Создать дикшинари дни в месяцах, где месяц это ключ, а количество дней - значение.
- В цикле выведите ключ-значение попарно, причем один раз выведите через тюплы, а другой раз пройдитесь по массиву ключей и для каждого из них доставайте значения.
-
- */
-print("-------------Task-2-------------")
-var monDict = ["Jan": 31, "Feb": 28, "Mar": 31, "Apr": 30, "May": 31, "Jun": 30, "Jul": 31, "Aug": 31, "Sep": 30, "Oct": 31, "Nov": 30, "Dec": 31]
-
-print("--------Method with Tuples------")
-
-for (key, value) in monDict {
-    print(key, "=", value)
+for days in monthDays {
+    print(days)
 }
 
-print("--------Method with Arrays------")
-for key in monDict.keys {
-    print("\(key) -> \(monDict[key]!)")
+let monthNames = ["Jan","Feb","Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+for (index, value) in monthDays.enumerated() {
+    print("\(monthNames[index]) -> \(value)")
 }
 
-print("-------------Task-3-------------")
-var chess: [String:Bool] = [:]
+var newArray = [(String, Int)]()
 
-let numbersChess = [1, 2, 3, 4, 5, 6, 7, 8]
-let letterChess = ["A", "B", "C", "D", "E", "F", "G", "H"]
+for i in 0..<monthDays.count {
+    let data = (monthNames[i], monthDays[i])
+    newArray.append(data)
+}
 
-for i in 0..<numbersChess.count {
-    for j in 0..<letterChess.count {
-        chess[letterChess[i] + String(numbersChess[j])] = (i % 2 == j % 2) ? false : true
+for (month, day) in newArray {
+    print(month, day)
+}
+
+print(terminator: "------")
+
+print()
+
+for (month, day) in newArray.reversed() {
+    print(month, day)
+}
+
+
+// - для произвольно выбранной даты (месяц и день) посчитайте количество дней до этой даты от начала года
+var count = 0
+let date = (month: "May", day: 14)
+
+for(month, day) in newArray {
+    if date.month != month {
+        count += day
+    } else {
+        count += (date.day - 1)
+        break
     }
 }
-
-var typePos = "E6"
-print("Chess Cage: \(typePos) \(chess[typePos] == true ? "white" : "black") ")
-
-print("-------------Second variant-------------")
-
-var chess1 : [String:Bool] = [:]
-
-for (index, letter) in letterChess.enumerated() {
-    for number in numbersChess {
-        chess1.updateValue((index + number) % 2 == 0, forKey: (letter + String(number)))
-    }
-}
-print(chess1)
-
+print("\(count) days before, \(date.month): \(date.day)")
